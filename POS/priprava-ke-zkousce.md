@@ -54,9 +54,9 @@
 		- Fyzická vrstva - Přenos signálu (bitů) bez ohledu na význam bitů
 		- Linková vrstva - Zajištění výměny dat mezi sousedními zařízeními v dosahu protokolu. Bity mají význam (data), přenáší se frame (rámce).
 		- Síťová vrstva - Přenos mezi vzdálenými, nesousedními zařízeními. Jednotka přenosu - paket.
-		- Transportní vrstva - Přenos dat mezi aplikacemi v rámci jednoho počítače. Jednotka přenosu - transportní paket (datagram (jen UDP) nebo segmet(TCP)). Protokoly TCP a UDP.
+		- Transportní vrstva - Přenos dat mezi aplikacemi v rámci jednoho počítače. Jednotka přenosu - transportní paket (datagram (UDP) nebo segmet (TCP)). Protokoly TCP a UDP.
 		- Relační vrstva - Zabezpečená organizace výměny dat mezi aplikacemi
-		- Prezentační vrstva - Jednotná reprezentace (a zabezpeční) informací, v jaké se přenáší sítí a jsou dostupné aplikacím
+		- Prezentační vrstva - Jednotná reprezentace (a zabezpeční) informací, v jaké se přenáší sítí a jsou dostupné aplikacím (ASCII)
 		- Aplikační vrstva - Předepisuje aplikační formát dat
 - Architektura TCP/IP
 	- Použití v síti Internet (dříve ARPANET)
@@ -99,7 +99,7 @@
 	- Dosažení maximální rychlosti na telefonní lince
 
 - GSM
-	- Bezdrátová síť pro přenos hlasu (telekomunikace)
+	- Bezdrátová síť pro přenos hlasu (a dat) (telekomunikace)
 	- Území rozdělené do buněk, které obsluhuje jedna BTS (Base Transceiver Station)
 	- Telefony komunikují s BTS
 
@@ -115,12 +115,12 @@
 	- Každé rozhraní má jednu jednoznačnou adresu
 	- 4B oddělené tečkami
 	- Dvě části adresy - adresa sítě a adresa uzlu
-	- Počet možných zařízení na síti: 2^(počet nul masky)
+	- Počet možných zařízení na síti: 2^(počet nul masky) - 2 (- broadcast, - adresa sítě)
 	- Třídy
 		- A - 255.0.0.0
 		- B - 255.255.0.0
 		- C - 255.255.255.0 (/24)
-		- D
+		- D - multicast
 		- E - Původně pro experimentální účely
 - Lokální síť (Intranet)
 	- Intranet = lokální síť (pro informační systém), obvykle uzavřená, nebo s omezením provozu z vnější sítě dovnitř (případně ven).
@@ -136,7 +136,7 @@
 - Fragmentace
 	- Linkové rámce mají omezenou velikost (MTU - Maximum Transfer Unit), ale IP paket může být větší => fragmentace
 	- Pokud je fragmentování zakázáno a paket překročí velikost MTU, nejspíš bude zahozen
-	- Fragmet = Packet obsahující stejnou hlavičku jako původní + offset (kolik dat bylo v předchozím fragmentu) a indikaci dalšího fragmentu
+	- Fragmet = Packet obsahující stejnou hlavičku jako původní + offset (kolik dat bylo v předchozím fragmentu) a indikaci dalšího fragmentu (MF)
 	- Skládání fragmentů se provádí pouze u příjemce paketu
 - ICMP (Internet Control Message Protocol) - Služební protokol pro diagnostiku a signalizaci mimořádných (chybových) stavů
 - (R)ARP
@@ -157,7 +157,7 @@
 	- Spojová
 		- Ztracená nebo poškozená data jsou znovu vyžádána - spolehlivá služba
 		- Integrita dat zabezpečena kontrolním součtem
-		- Zpracovává souvyslý proud uspořádaných dat od vyšší vrstvy
+		- Zpracovává souvislý proud uspořádaných dat od vyšší vrstvy
 	- Nespojová
 		- Nezaručuje doručení ani znovuzaslání ztracených nebo poškozených dat - nespolehlivá služba
 		- Integrita dat zabezpečena kontrolním součtem
@@ -237,7 +237,7 @@
 		- Primární - Hlavní autoritativní server pro doménu/zónu
 		- Sekundární - Vedlejší autoritativní server pro doménu/zónu. Pravidelně kopíruje záznamy z primárního serveru
 		- Caching only - Poskytuje pouze neautoritativní odpovědi
-		- Kořenový - Primární server pro kořenovou doménu/zónu. Je jich víc
+		- Kořenový - Primární server pro kořenovou doménu/zónu. Je jich víc (13, zrcadlově kopírované, celkem > 250 různě po světě) 
 		- Forwarder - Server provádějící překlad pro jiný server (v roli klienta)
 	- Pro každou doménu vždy minimálně dva jmenné servery
 - Překlad jména
@@ -280,7 +280,7 @@
 		- Delegace domény v nadřazené doméně
 	- Registrace
 		- Registrace domény - Prostřednictvím registrátora (CZ.NIC)
-		- Registrace reverzní domény
+		- Registrace reverzní domény (CZ.NIC)
 - Internet Registry
 	- Organizace přidělující v internetu IP adresy, čísla autonomních systémů, jména domén, ...
 	- IANA - Nejvyšší, rozděluje mezi regionální IR
