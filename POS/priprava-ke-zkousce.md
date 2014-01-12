@@ -52,9 +52,9 @@
 	- Normy pro propojení dvou zařízení
 	- Nepopisuje implementaci, ale uvádí všeobecné principy sedmivrstvé síťové architektury
 		- Fyzická vrstva - Přenos signálu (bitů) bez ohledu na význam bitů
-		- Linková vrstva - Zajištění výměny dat mezi sousedními zařízeními v dosahu protokolu. Bity mají význam (data).
+		- Linková vrstva - Zajištění výměny dat mezi sousedními zařízeními v dosahu protokolu. Bity mají význam (data), přenáší se frame (rámce).
 		- Síťová vrstva - Přenos mezi vzdálenými, nesousedními zařízeními. Jednotka přenosu - paket.
-		- Transportní vrstva - Přenos dat mezi aplikacemi v rámci jednoho počítače. Jednotka přenosu - transportní paket (datagram). Protokoly TCP a UDP.
+		- Transportní vrstva - Přenos dat mezi aplikacemi v rámci jednoho počítače. Jednotka přenosu - transportní paket (datagram (jen UDP) nebo segmet(TCP)). Protokoly TCP a UDP.
 		- Relační vrstva - Zabezpečená organizace výměny dat mezi aplikacemi
 		- Prezentační vrstva - Jednotná reprezentace (a zabezpeční) informací, v jaké se přenáší sítí a jsou dostupné aplikacím
 		- Aplikační vrstva - Předepisuje aplikační formát dat
